@@ -24,6 +24,7 @@ import ProfilePage from "./pages/ProfilePage";
 import DiscoverPage from "./pages/DiscoverPage";
 import GroupsPage from "./pages/GroupsPage";
 import CommunityPage from "./pages/CommunityPage";
+import ProductCategoryPage from "./pages/ProductCategoryPage";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/products/:categorySlug" element={<ProductCategoryPage />} />
                 <Route path="/products/:categorySlug" element={<ProductListingPage />} />
                 <Route path="/product/:productId" element={<ProductDetailPage />} />
                 <Route path="/login" element={<LoginPage />} />
