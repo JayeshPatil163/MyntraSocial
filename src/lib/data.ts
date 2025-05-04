@@ -196,89 +196,89 @@ export const products: Product[] = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
   {
-    "id": "9",
-    "title": "Roadster Men's Slim Fit Checked Sustainable Casual Shirt",
-    "brand": "Roadster",
-    "price": 1299,
-    "discountedPrice": 639,
-    "discountPercentage": 50,
-    "images": [
+    id: "9",
+    title: "Roadster Men's Slim Fit Checked Sustainable Casual Shirt",
+    brand: "Roadster",
+    price: 1299,
+    discountedPrice: 639,
+    discountPercentage: 50,
+    images: [
       "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790957-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-1.jpg",
       "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790938-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-2.jpg"
     ],
-    "category": "shirts",
-    "gender": "men",
-    "ratings": 4.2,
-    "description": "Khaki and green checked casual shirt, has a spread collar, button placket, 1 pocket, long sleeves, curved hem",
-    "sizes": ["S", "M", "L", "XL"]
+    category: "shirts",
+    gender: "men",
+    ratings: 4.2,
+    description: "Khaki and green checked casual shirt, has a spread collar, button placket, 1 pocket, long sleeves, curved hem",
+    sizes: ["S", "M", "L", "XL"]
   },
   {
-    "id": "10",
-    "title": "Leriya Fashion Men's Textured Regular Fit Casual Fancy Full Sleeve Shirt",
-    "brand": "Leriya Fashion",
-    "price": 820,
-    "discountedPrice": 410,
-    "discountPercentage": 50,
-    "images": [
+    id: "10",
+    title: "Leriya Fashion Men's Textured Regular Fit Casual Fancy Full Sleeve Shirt",
+    brand: "Leriya Fashion",
+    price: 820,
+    discountedPrice: 410,
+    discountPercentage: 50,
+    images: [
       "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg",
       "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg"
     ],
-    "category": "shirts",
-    "gender": "men",
-    "ratings": 4.0,
-    "description": "Men's textured regular fit casual fancy full sleeve shirt",
-    "sizes": ["M", "L", "XL", "XXL"]
+    category: "shirts",
+    gender: "men",
+    ratings: 4.0,
+    description: "Men's textured regular fit casual fancy full sleeve shirt",
+    sizes: ["M", "L", "XL", "XXL"]
   },
   {
-    "id": "11",
-    "title": "Libas Women Floral Printed Panelled Pure Cotton Kurta with Palazzo",
-    "brand": "Libas",
-    "price": 1999,
-    "discountedPrice": 1399,
-    "discountPercentage": 30,
-    "images": [
+    id: "11",
+    title: "Libas Women Floral Printed Panelled Pure Cotton Kurta with Palazzo",
+    brand: "Libas",
+    price: 1999,
+    discountedPrice: 1399,
+    discountPercentage: 30,
+    images: [
       "https://www.libas.in/cdn/shop/products/6767-XS_1.jpg?v=1677659334",
       "https://www.libas.in/cdn/shop/products/6767-XS_2.jpg?v=1677659334"
     ],
-    "category": "kurtas",
-    "gender": "women",
-    "ratings": 5.0,
-    "description": "Floral printed panelled pure cotton kurta with palazzo",
-    "sizes": ["S", "M", "L", "XL", "XXL"]
+    category: "kurtas",
+    gender: "women",
+    ratings: 5.0,
+    description: "Floral printed panelled pure cotton kurta with palazzo",
+    sizes: ["S", "M", "L", "XL", "XXL"]
   },
   {
-    "id": "12",
-    "title": "GoSriKi Women's Rayon Viscose Printed Anarkali Kurta with Palazzo & Dupatta",
-    "brand": "GoSriKi",
-    "price": 1398,
-    "discountedPrice": 699,
-    "discountPercentage": 50,
-    "images": [
+    id: "12",
+    title: "GoSriKi Women's Rayon Viscose Printed Anarkali Kurta with Palazzo & Dupatta",
+    brand: "GoSriKi",
+    price: 1398,
+    discountedPrice: 699,
+    discountPercentage: 50,
+    images: [
       "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg",
       "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg"
     ],
-    "category": "kurtas",
-    "gender": "women",
-    "ratings": 4.3,
-    "description": "Rayon viscose printed Anarkali kurta with palazzo and dupatta",
-    "sizes": ["S", "M", "L", "XL", "XXL"]
+    category : "kurtas",
+    gender: "women",
+    ratings: 4.3,
+    description: "Rayon viscose printed Anarkali kurta with palazzo and dupatta",
+    sizes: ["S", "M", "L", "XL", "XXL"]
   },
   {
-    "id": "13",
-    "title": "Puma Men White Smashic Unisex Sneakers",
-    "brand": "Puma",
-    "price": 5699,
-    "discountedPrice": 1709,
-    "discountPercentage": 70,
-    "images": [
+    id: "13",
+    title: "Puma Men White Smashic Unisex Sneakers",
+    brand: "Puma",
+    price: 5699,
+    discountPercentage: 70,
+    discountedPrice: 1709,
+    images: [
       "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/365215/01/sv01/fnd/IND/fmt/png",
       "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/365215/01/sv02/fnd/IND/fmt/png"
     ],
-    "category": "footwear",
-    "gender": "unisex",
-    "ratings": 4.5,
-    "description": "White Smashic unisex sneakers with lace-up closure",
-    "sizes": ["6", "7", "8", "9", "10", "11"]
+    category: "footwear",
+    gender: "unisex",
+    ratings: 4.5,
+    description: "White Smashic unisex sneakers with lace-up closure",
+    sizes: ["6", "7", "8", "9", "10", "11"]
   },
   {
     "id": "14",
