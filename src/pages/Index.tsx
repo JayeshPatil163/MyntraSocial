@@ -4,47 +4,17 @@ import Layout from '@/components/layout/Layout';
 import Banner from '@/components/home/Banner';
 import CategorySection from '@/components/home/CategorySection';
 import ProductGrid from '@/components/products/ProductGrid';
-import { useProductContext } from '../contexts/ProductContext';
+// import { useProductContext } from '../contexts/ProductContext';
 import { banners, categories, getFeaturedProducts, getNewArrivals } from '@/lib/data';
 
 const Index = () => {
-  const { products, isLoading, error } = useProductContext();
-   // Safely process products only when they're available as an array
-   const featuredProducts = (!isLoading && Array.isArray(products)) 
-   ? getFeaturedProducts(products) 
-   : [];
-   
- const newArrivals = (!isLoading && Array.isArray(products)) 
-   ? getNewArrivals(products) 
-   : [];
+//   const { products } = useProductContext();
+  const featuredProducts = getFeaturedProducts();
+  const newArrivals = getNewArrivals();
 
- // Debug logging
- useEffect(() => {
-   if (Array.isArray(products) && products.length > 0) {
-     console.log(`Total products: ${products.length}`);
-     console.log(`Featured products: ${featuredProducts.length}`);
-     console.log(`New arrivals: ${newArrivals.length}`);
-   }
- }, [products, featuredProducts, newArrivals]);
-
- if (isLoading) {
-   return (
-     <div className="flex justify-center items-center h-64">
-       {/* Replace with your actual loading component */}
-       <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-       <span className="ml-3">Loading products...</span>
-     </div>
-   );
- }
-
- if (error) {
-   return (
-     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-       <strong className="font-bold">Error!</strong>
-       <span className="block sm:inline"> {error.message}</span>
-     </div>
-   );
- }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Layout>
@@ -53,7 +23,7 @@ const Index = () => {
         <div className="relative w-fit">
   {/* Background image behind Banner */}
   <img
-    src="https://t3.ftcdn.net/jpg/10/35/61/98/360_F_1035619831_h8gC0irOb0Xn0pZ9IBhC3j5zTPVtXNav.jpg"
+    src="https://img.freepik.com/free-vector/small-squares-pattern_23-2147501057.jpg?ga=GA1.1.1614731262.1741437215&semt=ais_hybrid&w=740"
     alt="Background"
     className="absolute inset-0 w-full h-full object-cover z-0 pb-6"
   />
@@ -83,7 +53,12 @@ const Index = () => {
           </section>
           
           {/* Featured Products */}
-          
+          <section>
+            <ProductGrid 
+              products={featuredProducts} 
+              title="Featured Products" 
+            />
+          </section>
           
           {/* New Arrivals */}
           <section>

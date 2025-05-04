@@ -67,8 +67,8 @@ export const products: Product[] = [
     discountedPrice: 649,
     discountPercentage: 50,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/1823142/2017/4/27/11493281526196-WROGN-Men-Navy-Blue-Slim-Fit-Checked-Casual-Shirt-5201493281525914-1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/1823142/2017/4/27/11493281526175-WROGN-Men-Navy-Blue-Slim-Fit-Checked-Casual-Shirt-5201493281525914-2.jpg'
+      'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTIYlHhyYhR7lPpBJs0x0cyJQ5-W6pDRNdjwrRZQS-n_VnLbwgw0htDn2TpWlpW7pkxqVdzZttT4zUHoadM-GlA7HVp8z5Jp2KMTkpkrl4i',
+      'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcStYm5yLLbEZEu1739pxhPJ3XT0aPq228xHYNmLb0lRQIX8jTkEM9OMu1bhV3w_a6KZhxHmuDdOtgkIy3aJVazXks_XOfHSxTpbTW9MY-k6'
     ],
     category: 'shirts',
     gender: 'men',
@@ -84,8 +84,8 @@ export const products: Product[] = [
     discountedPrice: 1469,
     discountPercentage: 30,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2031039/2017/8/21/11503305724846-Levis-Women-Black-Skinny-Fit-Mid-Rise-Clean-Look-Stretchable-Jeans-7701503305724544-1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2031039/2017/8/21/11503305724826-Levis-Women-Black-Skinny-Fit-Mid-Rise-Clean-Look-Stretchable-Jeans-7701503305724544-2.jpg'
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR7oMna3ZeAr2oorphUAl8SQnKCzU7XS67JD_G7kpQ2h83LIT-G2-7gDB_FD9SS0tHP3ZrNqGPc4zSpD6Xfn3lK27_GzTTrCG1n_46rurEMzOCXqUPIqZxlUus',
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSgz3SDmt2meQOiE_xHhLJ54m78d_Mqz3JzZHGVqeCpKznLamgJJ9u0sAd-yw537DGF3wHxsIga1IqEJrBGL2O3X4xTthKeIe7YcUENmucg'
     ],
     category: 'jeans',
     gender: 'women',
@@ -101,8 +101,8 @@ export const products: Product[] = [
     discountedPrice: 2449,
     discountPercentage: 30,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/13036796/2021/2/1/d35156a1-afb5-4172-a9a7-9ad66b5547861612173862855-Puma-Men-White-Smash-v2-L-Sneakers-5691612173861657-1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/13036796/2021/2/1/600910a4-977e-4618-9f95-4d00dda910f11612173862837-Puma-Men-White-Smash-v2-L-Sneakers-5691612173861657-2.jpg'
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQlAoOT9c6U6swW9gIw7aRQxRHIcklo4ly5FvM8A5tkZqgPDnGfk605EIuSgxpiNkxTAgMQyHqjeeK0rAYHuxdoHu_eWtsmoL-zLBpue_RZwtAaO4ivO0oXWVg',
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQlAoOT9c6U6swW9gIw7aRQxRHIcklo4ly5FvM8A5tkZqgPDnGfk605EIuSgxpiNkxTAgMQyHqjeeK0rAYHuxdoHu_eWtsmoL-zLBpue_RZwtAaO4ivO0oXWVg'
     ],
     category: 'footwear',
     gender: 'men',
@@ -118,8 +118,8 @@ export const products: Product[] = [
     discountedPrice: 1044,
     discountPercentage: 45,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/10356511/2019/8/8/a28f9ccb-c0d7-4e66-87f0-e639f157ff2d1565263388836-Libas-Women-Kurta-Sets-571565263387250-1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/10356511/2019/8/8/f0f38d47-edd9-4681-9280-1a901565178b1565263388816-Libas-Women-Kurta-Sets-571565263387250-2.jpg'
+      'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSdK9-DdaV_hCIA3P9qL1IKycbrKIiEDJF7-vxKCe8eiegVi9yO3TRWDRPlLPFcb2Q3BQJ7Hn5J4J9M9sJfizQb-GJsZ_XYgpWlomVO_qm50xwErG-sNBUAMQ',
+      'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRQNEDbob4oioKe-_BSoD6OT9SvnBzh_71X3B-ZD7Jurs59fgV5tB_tGfwSyL3mkMy5kDxCs1FX3Htcu6h-dQm9J_P4tjQZ5_Y5PGJVTZoGHuOVbPb6lsK30w'
     ],
     category: 'kurtas',
     gender: 'women',
@@ -135,8 +135,8 @@ export const products: Product[] = [
     discountedPrice: 4199,
     discountPercentage: 30,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/15487828/2021/9/16/9c6742e5-edf5-437b-a0c5-49008d9a99c71631789631789HushPuppiesMenBrownFormalDerbys1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/15487828/2021/9/16/2bb36ed5-0089-4fb4-9e50-6c28223152211631789631812HushPuppiesMenBrownFormalDerbys2.jpg'
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQJrLWXcaIN-fVUf40i2vXlVJw8Sysh3DG7u-qLOuCIJQ98X4CGtSJ_UDOGKJNDEPCCXY-nxNp3dCy73nhYHYIfnu2PB530HiQX3FMiiOF4irkSWDFsJxKXUXU',
+      'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRub33L8mjK4WFfvoO1-aLMjr7hnArPIhlRkDjVk9i0260wsmlCfVNcuRfQVpTlkjKa-0q9lKjpkTF3XAMLFop0u4ocDVai6vvp3pmHSSC0Jds2c9Ulmz3vqA'
     ],
     category: 'formal shoes',
     gender: 'men',
@@ -152,8 +152,8 @@ export const products: Product[] = [
     discountedPrice: 2699,
     discountPercentage: 40,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2055932/2017/9/8/11504873559176-Jack--Jones-Men-Jackets-3211504873559039-1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2055932/2017/9/8/11504873559149-Jack--Jones-Men-Jackets-3211504873559039-2.jpg'
+      'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTPE41X4t8qTtt5kLhQlQhESW9QphNcLwEzqKaSt_tmVnM_1LLkJ30kFNAv53Es1GRTBYKLWvwI0w_IEGYh1EFaGthFyYjI2Q',
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTAJdI3yfza2KLD1VUEmiEUARscb0S2iY3M7412kw-I_18XBbjgLjhiqhcZH8Ry6BhPBh-c96jdA3X4rApyq10A1ci_hJuqQiZNl0osyEu6'
     ],
     category: 'jackets',
     gender: 'men',
@@ -169,8 +169,8 @@ export const products: Product[] = [
     discountedPrice: 899,
     discountPercentage: 50,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/16838052/2022/3/15/2b4402f7-8396-4a66-9e1f-e845ce61e79c1647341154473-DressBerry-Women-Jeans-5131647341153913-1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/16838052/2022/3/15/6981cd85-b22c-4676-913c-1e68a0d177e31647341154452-DressBerry-Women-Jeans-5131647341153913-2.jpg'
+      'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRBW_Acx2Pw4GoSPs1oPTfzkNBp7lCIgzie7ubPdvMS6P4oNab5cj16xomsWRXa1bfxBv8znmAobuIUVgnMNuIlTFSYvaD06JotRO0vBsbZNo9cL1RvX7l_Pw',
+      'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQgp1ozo3YIjWYCOa0Zh1kya9wj6B1wYWxi-piPxD3-7M2jVBiqkiwRoyiDYrmtk7kaYoMa6X3afdZHKEWyksL6rStzdx0da_P1FA6UTDDG'
     ],
     category: 'jeans',
     gender: 'women',
@@ -186,15 +186,185 @@ export const products: Product[] = [
     discountedPrice: 539,
     discountPercentage: 40,
     images: [
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2314581/2018/4/10/11523353120457-HRX-by-Hrithik-Roshan-Men-Tshirts-621523353120241-1.jpg',
-      'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2314581/2018/4/10/11523353120437-HRX-by-Hrithik-Roshan-Men-Tshirts-621523353120241-2.jpg'
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTsLIixIn_t5WvIsnEhyFd1JLdFR3KT3GPDXGMBGreX3BXT1Sw9E-B_VCDEGT1IkCHvBKDM86wgcgvU29wVJ2WVtrWolASZ88lm80rUaUBz',
+      'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSuJD7TvSA8-8-FskMLgbe-SwpaN5kXkbGeZP3V4MSh4OVvNm77A830J2MIh0zn17hqwyVqENdtCEynuebln-2ZMUrUNEdwn8Q5BPqqvSyV'
     ],
     category: 'tshirts',
     gender: 'men',
     ratings: 4.1,
     description: 'Maroon printed T-shirt, has a round neck, short sleeves',
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
-  }
+  },
+  {
+    "id": "9",
+    "title": "Roadster Men's Slim Fit Checked Sustainable Casual Shirt",
+    "brand": "Roadster",
+    "price": 1299,
+    "discountedPrice": 639,
+    "discountPercentage": 50,
+    "images": [
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790957-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-1.jpg",
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790938-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-2.jpg"
+    ],
+    "category": "shirts",
+    "gender": "men",
+    "ratings": 4.2,
+    "description": "Khaki and green checked casual shirt, has a spread collar, button placket, 1 pocket, long sleeves, curved hem",
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": "10",
+    "title": "Leriya Fashion Men's Textured Regular Fit Casual Fancy Full Sleeve Shirt",
+    "brand": "Leriya Fashion",
+    "price": 820,
+    "discountedPrice": 410,
+    "discountPercentage": 50,
+    "images": [
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg"
+    ],
+    "category": "shirts",
+    "gender": "men",
+    "ratings": 4.0,
+    "description": "Men's textured regular fit casual fancy full sleeve shirt",
+    "sizes": ["M", "L", "XL", "XXL"]
+  },
+  {
+    "id": "11",
+    "title": "Libas Women Floral Printed Panelled Pure Cotton Kurta with Palazzo",
+    "brand": "Libas",
+    "price": 1999,
+    "discountedPrice": 1399,
+    "discountPercentage": 30,
+    "images": [
+      "https://www.libas.in/cdn/shop/products/6767-XS_1.jpg?v=1677659334",
+      "https://www.libas.in/cdn/shop/products/6767-XS_2.jpg?v=1677659334"
+    ],
+    "category": "kurtas",
+    "gender": "women",
+    "ratings": 5.0,
+    "description": "Floral printed panelled pure cotton kurta with palazzo",
+    "sizes": ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    "id": "12",
+    "title": "GoSriKi Women's Rayon Viscose Printed Anarkali Kurta with Palazzo & Dupatta",
+    "brand": "GoSriKi",
+    "price": 1398,
+    "discountedPrice": 699,
+    "discountPercentage": 50,
+    "images": [
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg"
+    ],
+    "category": "kurtas",
+    "gender": "women",
+    "ratings": 4.3,
+    "description": "Rayon viscose printed Anarkali kurta with palazzo and dupatta",
+    "sizes": ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    "id": "13",
+    "title": "Puma Men White Smashic Unisex Sneakers",
+    "brand": "Puma",
+    "price": 5699,
+    "discountedPrice": 1709,
+    "discountPercentage": 70,
+    "images": [
+      "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/365215/01/sv01/fnd/IND/fmt/png",
+      "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/365215/01/sv02/fnd/IND/fmt/png"
+    ],
+    "category": "footwear",
+    "gender": "unisex",
+    "ratings": 4.5,
+    "description": "White Smashic unisex sneakers with lace-up closure",
+    "sizes": ["6", "7", "8", "9", "10", "11"]
+  },
+  {
+    "id": "14",
+    "title": "Puma Men's Galaxis Pro Performance Boost Running Shoes",
+    "brand": "Puma",
+    "price": 4499,
+    "discountedPrice": 3149,
+    "discountPercentage": 30,
+    "images": [
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg"
+    ],
+    "category": "footwear",
+    "gender": "men",
+    "ratings": 4.4,
+    "description": "Galaxis Pro performance boost running shoes with cushioned sole",
+    "sizes": ["7", "8", "9", "10", "11"]
+  },
+  {
+    "id": "15",
+    "title": "HRX by Hrithik Roshan Printed Round Neck T-shirt",
+    "brand": "HRX",
+    "price": 1199,
+    "discountedPrice": 719,
+    "discountPercentage": 40,
+    "images": [
+      "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/3/1/3/m-hrx-printed-round-neck-t-shirt-hrx-original-imagz9zjzv3z9zjz.jpeg?q=70",
+      "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/3/1/3/m-hrx-printed-round-neck-t-shirt-hrx-original-imagz9zjzv3z9zjz.jpeg?q=70"
+    ],
+    "category": "tshirts",
+    "gender": "men",
+    "ratings": 4.2,
+    "description": "Printed round neck T-shirt with short sleeves",
+    "sizes": ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    "id": "16",
+    "title": "Technosport Men's Lightweight Sporty Jacket",
+    "brand": "Technosport",
+    "price": 999,
+    "discountedPrice": 500,
+    "discountPercentage": 50,
+    "images": [
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71u0Y3z3M5L._UL1500_.jpg"
+    ],
+    "category": "jackets",
+    "gender": "men",
+    "ratings": 4.3,
+    "description": "Lightweight sporty jacket with zip closure and side pockets",
+    "sizes": ["M", "L", "XL", "XXL"]
+  },
+  {
+    "id": "17",
+    "title": "Miss Chase Women Skinny Fit High-Rise Clean Look Stretchable Jeans",
+    "brand": "Miss Chase",
+    "price": 2299,
+    "discountedPrice": 1149,
+    "discountPercentage": 50,
+    "images": [
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790957-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-1.jpg",
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790938-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-2.jpg"
+    ],
+    "category": "jeans",
+    "gender": "women",
+    "ratings": 4.2,
+    "description": "Skinny fit high-rise clean look stretchable jeans with button and zip closure",
+    "sizes": ["28", "30", "32", "34", "36"]
+  },
+  {
+    "id": "18",
+    "title": "Rimeline Floral Printed Notch-Neck Straight Kurta",
+    "brand": "Rimeline",
+    "price": 1699,
+    "discountedPrice": 679,
+    "discountPercentage": 60,
+    "images": [
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790957-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-1.jpg",
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2127873/2017/10/20/11508505790938-Roadster-Men-Khaki--Green-Slim-Fit-Checked-Casual-Shirt-2127873-2.jpg"
+    ],
+    "category": "kurtas",
+    "gender": "women",
+    "ratings": 4.0,
+    "description": "Floral printed notch-neck straight kurta with three-quarter sleeves",
+    "sizes": ["S", "M", "L", "XL", "XXL"]
+  },
 ];
 
 // Filter functions for products
@@ -212,13 +382,13 @@ export const getRelatedProducts = (product: Product) => {
   ).slice(0, 4);
 };
 
-// export const getFeaturedProducts = () => {
-//   return products.slice(0, 4);
-// };
+export const getFeaturedProducts = () => {
+  return products.slice(0, 4);
+};
 
-// export const getNewArrivals = () => {
-//   return products.slice(4, 8);
-// };
+export const getNewArrivals = () => {
+  return products.slice(4, 8);
+};
 
 // Featured could be based on a popularity score, but if not tracked:
 
@@ -232,58 +402,58 @@ export const getRelatedProducts = (product: Product) => {
 //   return products.filter(p => p.tags?.includes('newArrival'));
 // }
 
-export function getFeaturedProducts(products: any): Product[] {
-  // First ensure products is an array
-  if (!Array.isArray(products)) {
-    console.error('Expected products to be an array, got:', typeof products);
-    console.log('Products value:', products);
-    return [];
-  }
+// export function getFeaturedProducts(products: any): Product[] {
+//   // First ensure products is an array
+//   if (!Array.isArray(products)) {
+//     console.error('Expected products to be an array, got:', typeof products);
+//     console.log('Products value:', products);
+//     return [];
+//   }
   
-  // Filter featured products by checking for 'featured' tag in the tags array
-  return products.filter(product => {
-    // Make sure product and tags exist and tags is an array
-    if (!product || typeof product !== 'object') return false;
+//   // Filter featured products by checking for 'featured' tag in the tags array
+//   return products.filter(product => {
+//     // Make sure product and tags exist and tags is an array
+//     if (!product || typeof product !== 'object') return false;
     
-    // Check if tags contains 'featured'
-    if (Array.isArray(product.tags)) {
-      return product.tags.includes('featured');
-    }
+//     // Check if tags contains 'featured'
+//     if (Array.isArray(product.tags)) {
+//       return product.tags.includes('featured');
+//     }
     
-    // If tags is a string (comma-separated list), check if it includes 'featured'
-    if (typeof product.tags === 'string') {
-      return product.tags.split(',').map(tag => tag.trim()).includes('featured');
-    }
+//     // If tags is a string (comma-separated list), check if it includes 'featured'
+//     if (typeof product.tags === 'string') {
+//       return product.tags.split(',').map(tag => tag.trim()).includes('featured');
+//     }
     
-    return false;
-  });
-}
+//     return false;
+//   });
+// }
 
-/**
- * Get new arrivals from the product list
- */
-export function getNewArrivals(products: Product[]): Product[] {
-  // First ensure products is an array
-  if (!Array.isArray(products)) {
-    console.error('Expected products to be an array, got:', typeof products);
-    return [];
-  }
+// /**
+//  * Get new arrivals from the product list
+//  */
+// export function getNewArrivals(products: Product[]): Product[] {
+//   // First ensure products is an array
+//   if (!Array.isArray(products)) {
+//     console.error('Expected products to be an array, got:', typeof products);
+//     return [];
+//   }
   
-  // Get current date to compare with product dates
-  const now = new Date();
-  // Products added in the last 30 days are considered new arrivals
-  const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+//   // Get current date to compare with product dates
+//   const now = new Date();
+//   // Products added in the last 30 days are considered new arrivals
+//   const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
   
-  return products
-    .filter(product => {
-      if (!product.createdAt) return false;
-      const productDate = new Date(product.createdAt);
-      return productDate >= thirtyDaysAgo;
-    })
-    .sort((a, b) => {
-      // Sort by newest first
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    });
-}
+//   return products
+//     .filter(product => {
+//       if (!product.createdAt) return false;
+//       const productDate = new Date(product.createdAt);
+//       return productDate >= thirtyDaysAgo;
+//     })
+//     .sort((a, b) => {
+//       // Sort by newest first
+//       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+//     });
+// }
 
-// ProductService class for fetching products
+// // ProductService class for fetching products

@@ -28,7 +28,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
     try {
       if (type === 'login') {
         // Call the login API endpoint
-        const response = await fetch('http://localhost:5050/api/users/login', {
+        const response = await fetch('https://myntrasocialbackend.onrender.com/api/users/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
         }
       } else {
         // Call the registration API instead of the signup function
-        const response = await fetch('http://localhost:5050/api/users/register', {
+        const response = await fetch('https://myntrasocialbackend.onrender.com/api/users/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
