@@ -25,7 +25,9 @@ const ProductListingPage = () => {
     window.scrollTo(0, 0);
     if (categorySlug) {
       const fetchedProducts = getProductsByCategory(categorySlug);
+      console.log(categorySlug);
       setProducts(fetchedProducts);
+      console.log(fetchedProducts);
       setFilteredProducts(fetchedProducts);
       
       // Extract unique brands

@@ -40,7 +40,6 @@ const App = () => (
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="/products/:categorySlug" element={<ProductCategoryPage />} />
                 <Route path="/products/:categorySlug" element={<ProductListingPage />} />
                 <Route path="/product/:productId" element={<ProductDetailPage />} />
                 <Route path="/login" element={<LoginPage />} />
@@ -48,7 +47,7 @@ const App = () => (
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/profile/:username" element={<ProfilePage />} />
+                <Route path="/profile/:userid" element={<ProfilePage />} />
                 <Route path="/discover" element={<DiscoverPage />} />
                 <Route path="/groups" element={<GroupsPage />} />
                 <Route path="/groups/:groupId" element={<GroupsPage />} />

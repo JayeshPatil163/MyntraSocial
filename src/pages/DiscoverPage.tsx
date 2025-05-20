@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
@@ -10,6 +9,8 @@ import { User } from '@/lib/types';
 import { Search, UserPlus } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/components/ui/use-toast';
+import { getMockUsers } from '@/lib/data';
+import { mock } from 'node:test';
 
 const DiscoverPage = () => {
   const { user: currentUser } = useAuth();
@@ -23,17 +24,18 @@ const DiscoverPage = () => {
     // Simulate fetching users
     setIsLoading(true);
     setTimeout(() => {
+      const mockUsers = getMockUsers();
       // Mock user data for demo
-      const mockUsers = Array.from({ length: 20 }).map((_, idx) => ({
-        id: `user-${idx}`,
-        name: `User ${idx + 1}`,
-        email: `user${idx + 1}@example.com`,
-        username: `user${idx + 1}`,
-        avatar: `https://i.pravatar.cc/150?img=${idx + 10}`,
-        bio: idx % 3 === 0 ? 'Fashion enthusiast and shopaholic!' : 'Love shopping at Myntra!',
-        followers: [],
-        following: [],
-      }));
+      // const mockUsers = Array.from({ length: 20 }).map((_, idx) => ({
+      //   id: `user-${idx}`,
+      //   name: `User ${idx + 1}`,
+      //   email: `user${idx + 1}@example.com`,
+      //   username: `user${idx + 1}`,
+      //   avatar: `https://i.pravatar.cc/150?img=${idx + 10}`,
+      //   bio: idx % 3 === 0 ? 'Fashion enthusiast and shopaholic!' : 'Love shopping at Myntra!',
+      //   followers: [],
+      //   following: [],
+      // }));
       
       setUsers(mockUsers);
       setFilteredUsers(mockUsers);
@@ -136,35 +138,51 @@ interface UserCardProps {
 }
 
 const UserCard = ({ user, onSendFriendRequest }: UserCardProps) => {
+  const [requestSent, setRequestSent] = useState(false);
+  console.log(user.id);
   return (
-    <div className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center text-center">
-      <Link to={`/profile/${user.username}`}>
-        <Avatar className="h-20 w-20 mb-3">
-          <AvatarImage src={user.avatar} alt={user.name} />
-          <AvatarFallback>{user.name?.[0]?.toUpperCase()}</AvatarFallback>
-        </Avatar>
-      </Link>
+    <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center h-full">
+      <div className="flex flex-col items-center text-center flex-grow">
+        <Link to={`/profile/${user.id}`}>
+          <Avatar className="h-20 w-20 mb-3">
+            <AvatarImage src={user.avatar} alt={user.name} />
+            <AvatarFallback>{user.name?.[0]?.toUpperCase()}</AvatarFallback>
+          </Avatar>
+        </Link>
+        <Link to={`/profile/${user.id}`} className="hover:underline">
+          <h3 className="font-medium">{user.name}</h3>
+        </Link>
+        
+        <p className="text-gray-500 mb-4 text-sm">@{user.username}</p>
+        
+        {/* {user.bio && (
+          <p className="text-gray-600 text-sm mt-2 line-clamp-2">{user.bio}</p>
+        )} */}
+      </div>
       
-      <Link to={`/profile/${user.username}`} className="hover:underline">
-        <h3 className="font-medium">{user.name}</h3>
-      </Link>
-      
-      <p className="text-gray-500 text-sm">@{user.username}</p>
-      
-      {user.bio && (
-        <p className="text-gray-600 text-sm mt-2 line-clamp-2">{user.bio}</p>
-      )}
-      
-      <div className="mt-4 w-full">
-        <Button 
-          variant="outline" 
-          size="sm" 
-          className="w-full"
-          onClick={() => onSendFriendRequest(user.id)}
-        >
-          <UserPlus className="mr-2 h-4 w-4" />
-          Add Friend
-        </Button>
+      <div className="mt-auto w-full">
+        {requestSent ? (
+          <Button
+            variant="secondary"
+            size="sm"
+            className="w-full bg-gray-200 text-gray-700 hover:bg-gray-300"
+            onClick={() => setRequestSent(false)}
+          >
+            Request Sent
+          </Button>
+        ) : (
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-full bg-gradient-to-r from-pink-400 to-orange-400 text-white hover:opacity-90"
+            onClick={() => {
+              onSendFriendRequest(user.id);
+              setRequestSent(true);
+            }}
+          >
+            Follow
+          </Button>
+        )}
       </div>
     </div>
   );

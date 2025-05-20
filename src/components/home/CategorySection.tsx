@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Category } from '@/lib/types';
 
 interface CategorySectionProps {
-  categories: Category[];
+  category: Category[];
   title?: string;
 }
 
@@ -27,20 +27,20 @@ const generateDiscount = (categoryId: string | number): { min: number; max: numb
   return discountPatterns[patternIndex];
 };
 
-const CategorySection = ({ categories, title }: CategorySectionProps) => {
+const CategorySection = ({ category, title }: CategorySectionProps) => {
   return (
     <div className="my-8">
       {title && <h2 className="text-2xl font-bold mb-4">{title}</h2>}
       
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        {categories.map((category) => {
+        {category.map((category) => {
           // Generate discount range for this category
           const discount = generateDiscount(category.id);
           
           return (
             <Link 
               key={category.id} 
-              to={`/products/${category.slug}`}
+              to={`/products/${category.name}`}
               className="transition-transform hover:scale-105"
             >
               <div className="border-2 border-amber-400 rounded overflow-hidden shadow-md">

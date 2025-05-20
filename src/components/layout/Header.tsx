@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-2">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center">
@@ -47,47 +47,47 @@ const Header = () => {
               <img 
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUrnmr3CB1oDs0WqiWPzNxENXCnRE-1yKVKw&s" 
                 alt="Myntra Logo" 
-                className="h-8 md:h-10"
+                className="h-10 md:h-12"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation using NavDropdown */}
-          <NavDropdown categories={navigationCategories} />
+          <NavDropdown category={navigationCategories} />
 
           {/* Search Bar */}
-          <div className="hidden md:flex flex-1 max-w-md mx-4">
+          <div className="hidden md:flex flex-1 max-w-lg mx-4">
             <form onSubmit={handleSearch} className="relative w-full">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />
               </div>
-              <input
-                type="search"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-full w-full pl-10 p-2.5 focus:outline-none focus:ring-1 focus:ring-primary"
-                placeholder="Search for products, brands and more"
-              />
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="rounded-sm bg-gray-100 text-gray-900 py-3 text-xs w-full pl-10 p-2.5 focus:outline-none focus:ring-0.5 focus:ring-gray-600 focus:border focus:border-gray-100 focus:bg-white"
+                  placeholder="Search for products, brands and more"
+                />
             </form>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex ml-10 items-center space-x-10">
             {/* Profile with Hover Card */}
             <div className="relative hidden md:flex flex-col items-center">
               <HoverCard openDelay={100} closeDelay={200}>
                 <HoverCardTrigger asChild>
-                  <Button variant="ghost" size="icon" className="hover:bg-transparent">
-                    {isAuthenticated && user?.avatar ? (
-                      <Avatar className="h-8 w-8">
-                        <AvatarImage src={user.avatar} alt={user.name} />
-                        <AvatarFallback>{user.name[0]?.toUpperCase()}</AvatarFallback>
+                <Button variant="ghost" size="icon" className="hover:bg-transparent flex flex-col items-center">
+                  {isAuthenticated && user?.avatar ? (
+                    <Avatar className="h-10 w-10">
+                      <AvatarImage src={user.avatar} alt={user.name} />
+                        <AvatarFallback className="font-normal">{user.name[0]?.toUpperCase()}</AvatarFallback>
                       </Avatar>
-                    ) : (
-                      <User size={20} />
-                    )}
-                    <span className="text-xs mt-1">Profile</span>
-                  </Button>
+                  ) : (
+                    <User size={20} />
+                  )}  
+                  <span className="text-xs font-bold">Profile</span>
+                </Button>
                 </HoverCardTrigger>
                 <HoverCardContent className="w-72">
                   {isAuthenticated ? (
@@ -163,32 +163,16 @@ const Header = () => {
               </HoverCard>
             </div>
 
-            {/* Discover - New */}
-            <div className="relative hidden md:flex flex-col items-center">
-              <Link to="/discover" className="flex flex-col items-center">
-                <Compass size={20} />
-                <span className="text-xs mt-1">Discover</span>
-              </Link>
-            </div>
-
-            {/* Community - New */}
-            <div className="relative hidden md:flex flex-col items-center">
-              <Link to="/community" className="flex flex-col items-center">
-                <MessageSquare size={20} />
-                <span className="text-xs mt-1">Community</span>
-              </Link>
-            </div>
-
             {/* Wishlist */}
             <div className="relative hidden md:flex flex-col items-center">
               <Link to="/wishlist" className="flex flex-col items-center">
                 <div className="relative">
-                  <Heart size={20} />
+                  <Heart size={20} strokeWidth={1}/>
                   {wishlistItems > 0 && (
                     <span className="badge-count">{wishlistItems}</span>
                   )}
                 </div>
-                <span className="text-xs mt-1">Wishlist</span>
+                <span className="text-xs font-bold mt-1">Wishlist</span>
               </Link>
             </div>
 
@@ -196,12 +180,12 @@ const Header = () => {
             <div className="relative hidden md:flex flex-col items-center">
               <Link to="/cart" className="flex flex-col items-center">
                 <div className="relative">
-                  <ShoppingBag size={20} />
+                  <ShoppingBag size={20} strokeWidth={1}/>
                   {cartItems > 0 && (
                     <span className="badge-count">{cartItems}</span>
                   )}
                 </div>
-                <span className="text-xs mt-1">Bag</span>
+                <span className="text-xs font-bold mt-1">Bag</span>
               </Link>
             </div>
 

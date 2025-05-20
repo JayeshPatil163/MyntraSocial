@@ -16,7 +16,7 @@ interface CategoryItem {
 interface BannerSet {
   id: string;
   title: string;
-  categories: CategoryItem[];
+  category: CategoryItem[];
 }
 
 const MyntraBanner = () => {
@@ -27,7 +27,7 @@ const MyntraBanner = () => {
     {
       id: "summer-sale",
       title: "Summer Sale - Up to 70% Off!",
-      categories: [
+      category: [
         {
           id: "backpacks",
           imageUrl: "https://skybags.co.in/cdn/shop/files/1_696778fa-fc28-4d13-a72b-0f39fcc66081.png?v=1688472347&width=1000",
@@ -83,7 +83,7 @@ const MyntraBanner = () => {
     {
       id: "winter-collection",
       title: "Winter Collection 2025",
-      categories: [
+      category: [
         {
           id: "sweaters",
           imageUrl: "https://media1.popsugar-assets.com/files/thumbor/O3iVAznSXSQC50FikkUMqQrBmcE=/fit-in/768x1152/filters:format_auto():upscale()/2022/10/27/770/n/1922564/c9adb4790fba176f_hmgoepprod_1_.jpeg",
@@ -139,7 +139,7 @@ const MyntraBanner = () => {
     {
       id: "festival-deals",
       title: "Festival Special Deals",
-      categories: [
+      category: [
         {
           id: "ethnic-wear",
           imageUrl: "https://static.toiimg.com/photo/69594244.cms",
@@ -220,7 +220,7 @@ const MyntraBanner = () => {
       {/* Main Banner Content */}
       <div className="relative">
         <div className="grid grid-cols-5">
-          {currentBanner.categories.map((category) => (
+          {currentBanner.category.map((category) => (
             <div key={category.id} className="relative overflow-hidden rounded-t-xl border border-orange-300 group">
               {/* Product Image Section */}
               <div className="relative">

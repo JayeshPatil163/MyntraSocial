@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { useAuth } from '@/contexts/AuthContext';
@@ -8,6 +7,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Group, User, SharedWishlistItem } from '@/lib/types';
+
+type ChatMessage = {
+  id: string;
+  sender: string;
+  text: string;
+  timestamp: Date;
+  items: string[];
+};
 import { useToast } from '@/components/ui/use-toast';
 import { 
   Dialog,
@@ -18,8 +25,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Loader2, Plus, Share, ThumbsUp, UserPlus } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { 
+  Sheet, 
+  SheetContent, 
+  SheetDescription, 
+  SheetHeader, 
+  SheetTitle 
+} from "@/components/ui/sheet";
+import { Loader2, Plus, Send, Share, ThumbsUp, UserPlus, ChevronRight, ArrowLeft, MoreVertical, Image } from 'lucide-react';
 import ExtendedProductCard from '@/components/products/ExtendedProductCard';
 
 const GroupsPage = () => {
@@ -27,6 +48,7 @@ const GroupsPage = () => {
   const { user: currentUser } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const messagesEndRef = useRef(null);
   
   const [isLoading, setIsLoading] = useState(true);
   const [groups, setGroups] = useState<Group[]>([]);
@@ -34,10 +56,21 @@ const GroupsPage = () => {
   const [members, setMembers] = useState<User[]>([]);
   const [sharedItems, setSharedItems] = useState<SharedWishlistItem[]>([]);
   const [invitingUsers, setInvitingUsers] = useState<boolean>(false);
+  const [messageText, setMessageText] = useState('');
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [isMembersPanelOpen, setIsMembersPanelOpen] = useState(false);
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
   
   const [newGroupName, setNewGroupName] = useState('');
   const [newGroupDescription, setNewGroupDescription] = useState('');
   const [showCreateDialog, setShowCreateDialog] = useState(false);
+
+  // Auto-scroll to bottom when new messages are added
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   useEffect(() => {
     // Simulate fetching groups
@@ -69,6 +102,8 @@ const GroupsPage = () => {
             email: `user${memberId.split('-')[1]}@example.com`,
             username: `user${memberId.split('-')[1]}`,
             avatar: `https://i.pravatar.cc/150?img=${parseInt(memberId.split('-')[1]) + 10}`,
+            isOnline: Math.random() > 0.5,
+            lastSeen: new Date()
           }));
           
           setMembers(mockMembers);
@@ -84,7 +119,7 @@ const GroupsPage = () => {
               discountedPrice: 1499 + (itemIdx * 500),
               discountPercentage: 25,
               images: [`https://picsum.photos/seed/${itemIdx + 1}/300/400`],
-              category: 'Clothing',
+              category: ['Clothing'],
               gender: 'Men',
               ratings: 4.5,
               description: 'A fantastic product',
@@ -96,6 +131,47 @@ const GroupsPage = () => {
           }));
           
           setSharedItems(mockSharedItems);
+          
+          // Mock chat messages
+          const mockMessages = [
+            {
+              id: 'msg-1',
+              sender: 'user-1',
+              text: 'Hey everyone! Check out this cool jacket I found!',
+              timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2),
+              items: ['item-0'],
+            },
+            {
+              id: 'msg-2',
+              sender: 'user-2',
+              text: 'That looks great! I like the color.',
+              timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2 + 1000 * 60 * 5),
+              items: [],
+            },
+            {
+              id: 'msg-3',
+              sender: 'user-3',
+              text: 'I found these two shirts that would match nicely!',
+              timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24),
+              items: ['item-1', 'item-2'],
+            },
+            {
+              id: 'msg-4',
+              sender: 'user-1',
+              text: 'What do you all think about this style?',
+              timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
+              items: ['item-3'],
+            },
+            {
+              id: 'msg-5',
+              sender: 'user-2',
+              text: 'Love it! Let\'s all get matching outfits!',
+              timestamp: new Date(Date.now() - 1000 * 60 * 30),
+              items: [],
+            },
+          ];
+          
+          setMessages(mockMessages);
         }
       }
       
@@ -163,6 +239,83 @@ const GroupsPage = () => {
       title: "Item Approved",
       description: "You have approved this item",
     });
+  };
+  
+  const handleSendMessage = () => {
+    if (!messageText.trim()) return;
+    
+    const newMessage: ChatMessage = {
+      id: `msg-${messages.length + 1}`,
+      sender: currentUser?.id || 'user-1',
+      text: messageText,
+      timestamp: new Date(),
+      items: [],
+    };
+    
+    setMessages([...messages, newMessage]);
+    setMessageText('');
+  };
+  
+  const handleShareToGroup = (productId: string) => {
+    // In a real app, this would find the product and add it to the group
+    toast({
+      title: "Item Shared",
+      description: "Item has been shared with the group",
+    });
+  };
+  
+  const formatMessageTime = (timestamp: Date) => {
+    return timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+  
+  const formatMessageDate = (timestamp: Date) => {
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    
+    if (timestamp.toDateString() === today.toDateString()) {
+      return 'Today';
+    } else if (timestamp.toDateString() === yesterday.toDateString()) {
+      return 'Yesterday';
+    } else {
+      return timestamp.toLocaleDateString();
+    }
+  };
+  
+  const groupMessagesByDate = () => {
+    const groupedMessages = [];
+    let currentDate = null;
+    
+    for (const message of messages) {
+      const messageDate = new Date(message.timestamp).toDateString();
+      
+      if (messageDate !== currentDate) {
+        currentDate = messageDate;
+        groupedMessages.push({
+          type: 'date',
+          date: message.timestamp,
+          id: `date-${messageDate}`
+        });
+      }
+      
+      groupedMessages.push({
+        type: 'message',
+        message: message
+      });
+    }
+    
+    return groupedMessages;
+  };
+  
+  const getMemberByUserId = (userId: string) => {
+    return members.find(member => member.id === userId) || {
+      name: `User ${userId.split('-')[1]}`,
+      avatar: `https://i.pravatar.cc/150?img=${parseInt(userId.split('-')[1]) + 10}`,
+    };
+  };
+  
+  const getItemsByIds = (itemIds: string[]) => {
+    return sharedItems.filter(item => itemIds.includes(item.id));
   };
 
   if (isLoading) {
@@ -260,101 +413,395 @@ const GroupsPage = () => {
     );
   }
 
-  // Group detail view
+  // WhatsApp-like group detail view
   return (
     <Layout>
-      <div className="container mx-auto py-8">
-        <div className="mb-6">
-          <div className="flex items-center justify-between">
+      <div className="flex flex-col h-screen">
+        {/* Group Header */}
+        <div className="bg-primary text-white p-4 shadow-sm flex items-center justify-between">
+          <div className="flex items-center">
+            <Link to="/groups" className="mr-3">
+              <ArrowLeft className="h-5 w-5" />
+            </Link>
+            <Avatar className="h-10 w-10 mr-3">
+              <AvatarImage src={`https://picsum.photos/seed/${currentGroup.id}/200/200`} />
+              <AvatarFallback>{currentGroup.name[0]?.toUpperCase()}</AvatarFallback>
+            </Avatar>
             <div>
-              <h1 className="text-2xl font-bold">{currentGroup.name}</h1>
-              {currentGroup.description && (
-                <p className="text-gray-600 mt-1">{currentGroup.description}</p>
-              )}
+              <h1 className="font-bold">{currentGroup.name}</h1>
+              <p className="text-xs opacity-80">{members.length} members</p>
             </div>
-            <Button onClick={() => setInvitingUsers(true)}>
-              <UserPlus className="mr-2 h-4 w-4" />
-              Invite Friends
+          </div>
+          <div className="flex items-center">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-white hover:bg-primary/90"
+              onClick={() => setIsMembersPanelOpen(!isMembersPanelOpen)}
+            >
+              <UserPlus className="h-5 w-5" />
             </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-white hover:bg-primary/90">
+                  <MoreVertical className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Group Options</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => setInvitingUsers(true)}>
+                  <UserPlus className="h-4 w-4 mr-2" />
+                  Invite Members
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Share className="h-4 w-4 mr-2" />
+                  Share Group
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
         
-        <Tabs defaultValue="shared" className="mt-6">
-          <TabsList>
-            <TabsTrigger value="shared">Shared Items</TabsTrigger>
-            <TabsTrigger value="members">Members ({members.length})</TabsTrigger>
-          </TabsList>
+        {/* Chat area with flex layout for main content and sidebar */}
+        <div className="flex flex-1 overflow-hidden">
+          {/* Main Chat Area */}
+          <div className="flex-1 flex flex-col h-full overflow-hidden">
+            {/* Messages Section */}
+            <div className="flex-1 overflow-y-auto bg-gray-50 p-4">
+              <div className="max-w-3xl mx-auto">
+                {groupMessagesByDate().map((item, idx) => {
+                  if (item.type === 'date') {
+                    return (
+                      <div 
+                        key={item.id} 
+                        className="flex justify-center my-4"
+                      >
+                        <span className="bg-gray-200 text-gray-600 px-4 py-1 rounded-full text-xs">
+                          {formatMessageDate(item.date)}
+                        </span>
+                      </div>
+                    );
+                  }
+                  
+                  const message = item.message;
+                  const member = getMemberByUserId(message.sender);
+                  const isCurrentUser = message.sender === (currentUser?.id || 'user-1');
+                  const messageItems = getItemsByIds(message.items);
+                  
+                  return (
+                    <div 
+                      key={message.id} 
+                      className={`flex mb-4 ${isCurrentUser ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div className={`max-w-[70%] ${isCurrentUser ? 'order-2' : 'order-1'}`}>
+                        {!isCurrentUser && (
+                          <div className="flex items-center mb-1 ml-1">
+                            <Avatar className="h-5 w-5 mr-1">
+                              <AvatarImage src={member.avatar} />
+                              <AvatarFallback>{member.name[0]?.toUpperCase()}</AvatarFallback>
+                            </Avatar>
+                            <span className="text-xs text-gray-600">{member.name}</span>
+                          </div>
+                        )}
+                        
+                        {message.text && (
+                          <div 
+                            className={`rounded-lg p-3 mb-1 ${
+                              isCurrentUser 
+                                ? 'bg-primary text-white rounded-tr-none' 
+                                : 'bg-white text-gray-800 rounded-tl-none shadow-sm'
+                            }`}
+                          >
+                            <p className="whitespace-pre-wrap">{message.text}</p>
+                            <div className={`text-xs mt-1 text-right ${isCurrentUser ? 'text-primary-50' : 'text-gray-500'}`}>
+                              {formatMessageTime(new Date(message.timestamp))}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {messageItems.length > 0 && (
+                          <div className={`mt-1 ${message.text ? 'ml-auto' : ''} ${isCurrentUser ? 'ml-auto' : ''}`}>
+                            {messageItems.length === 1 ? (
+                              // Single product display
+                              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+                                <div 
+                                  className="relative cursor-pointer"
+                                  onClick={() => setExpandedItem(messageItems[0].id)}
+                                >
+                                  <img 
+                                    src={messageItems[0].product.images[0]} 
+                                    alt={messageItems[0].product.title} 
+                                    className="w-full h-48 object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                    <div className="bg-black bg-opacity-50 text-white px-3 py-1 rounded-full">
+                                      View Product
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="p-3">
+                                  <h3 className="font-medium text-sm">{messageItems[0].product.title}</h3>
+                                  <div className="flex items-center mt-1 justify-between">
+                                    <div className="text-primary font-medium">
+                                      ${(messageItems[0].product.discountedPrice / 100).toFixed(2)}
+                                    </div>
+                                    <div>
+                                      {messageItems[0].approvals.includes(currentUser?.id || 'user-1') ? (
+                                        <span className="flex items-center text-xs text-primary">
+                                          <ThumbsUp className="h-3 w-3 mr-1" />
+                                          Approved
+                                        </span>
+                                      ) : (
+                                        <Button 
+                                          size="sm" 
+                                          variant="outline" 
+                                          className="h-7 text-xs"
+                                          onClick={() => handleApproveItem(messageItems[0].id)}
+                                        >
+                                          <ThumbsUp className="h-3 w-3 mr-1" />
+                                          Approve
+                                        </Button>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              // Instagram-like stacked cards for multiple products
+                              <div className="relative">
+                                <div 
+                                  className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer"
+                                  onClick={() => setExpandedItem(messageItems[0].id)}
+                                >
+                                  <div className="relative">
+                                    <img 
+                                      src={messageItems[0].product.images[0]} 
+                                      alt={messageItems[0].product.title} 
+                                      className="w-full h-48 object-cover"
+                                    />
+                                    <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white rounded-full h-6 w-6 flex items-center justify-center">
+                                      <span className="text-xs">{messageItems.length}</span>
+                                    </div>
+                                  </div>
+                                  <div className="p-3">
+                                    <h3 className="font-medium text-sm truncate">{messageItems[0].product.title}</h3>
+                                    <div className="flex items-center mt-1 justify-between">
+                                      <div className="text-primary font-medium">
+                                        ${(messageItems[0].product.discountedPrice / 100).toFixed(2)}
+                                      </div>
+                                      <div>
+                                        <span className="text-xs text-gray-500">+{messageItems.length - 1} more</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                {/* Stacked effect */}
+                                <div className="absolute top-1 right-1 left-1 bottom-1 bg-gray-100 rounded-lg -z-10"></div>
+                                <div className="absolute top-2 right-2 left-2 bottom-2 bg-gray-200 rounded-lg -z-20"></div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+                <div ref={messagesEndRef} />
+              </div>
+            </div>
+
+            {/* Message Input */}
+            <div className="bg-white p-3 border-t">
+              <div className="flex items-center gap-2 max-w-3xl mx-auto">
+                <Button variant="ghost" size="icon">
+                  <Image className="h-5 w-5 text-gray-500" />
+                </Button>
+                <Input 
+                  placeholder="Type a message..." 
+                  className="flex-1"
+                  value={messageText}
+                  onChange={(e) => setMessageText(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendMessage();
+                    }
+                  }}
+                />
+                <Button size="icon" onClick={handleSendMessage}>
+                  <Send className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
           
-          <TabsContent value="shared" className="mt-6">
-            {sharedItems.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {sharedItems.map((item) => (
-                  <div key={item.id} className="relative">
-                    <ExtendedProductCard 
-                      product={item.product}
-                      actionButton={
-                        item.approvals.includes(currentUser?.id || 'user-1') ? (
+          {/* Members Sidebar - Shown based on state */}
+          <Sheet open={isMembersPanelOpen} onOpenChange={setIsMembersPanelOpen}>
+            <SheetContent className="w-[300px] sm:w-[400px] p-0">
+              <SheetHeader className="p-4 border-b">
+                <SheetTitle>Group Members</SheetTitle>
+                <SheetDescription>
+                  {members.length} members in this group
+                </SheetDescription>
+              </SheetHeader>
+              <div className="overflow-y-auto h-full pb-20">
+                <div className="p-2">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => setInvitingUsers(true)}
+                  >
+                    <UserPlus className="h-4 w-4 mr-2" />
+                    Invite New Members
+                  </Button>
+                </div>
+                <div className="pt-2">
+                  {members.map((member) => (
+                    <div key={member.id} className="flex items-center px-4 py-3 hover:bg-gray-50">
+                      <Avatar className="h-10 w-10 mr-3 relative">
+                        <AvatarImage src={member.avatar} />
+                        <AvatarFallback>{member.name[0]?.toUpperCase()}</AvatarFallback>
+                        {/* {member.isOnline && (
+                          <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
+                        )} */}
+                      </Avatar>
+                      <div className="flex-1">
+                        <div className="font-medium">{member.name}</div>
+                        {/* <div className="text-xs text-gray-500">
+                          {member.isOnline ? 'Online' : 'Last seen recently'}
+                        </div> */}
+                      </div>
+                      {currentGroup.creator === member.id && (
+                        <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                          Admin
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+        
+        {/* Product Preview Dialog */}
+        <Dialog 
+          open={!!expandedItem} 
+          onOpenChange={(open) => !open && setExpandedItem(null)}
+        >
+          <DialogContent className="max-w-3xl">
+            {expandedItem && (() => {
+              // Find the message that contains this item
+              const message = messages.find(msg => msg.items.includes(expandedItem));
+              if (!message) return null;
+              
+              const items = getItemsByIds(message.items);
+              const expandedItemData = items.find(item => item.id === expandedItem);
+              const expandedItemIndex = items.findIndex(item => item.id === expandedItem);
+              
+              return (
+                <>
+                  <DialogHeader>
+                    <DialogTitle>{expandedItemData?.product.title}</DialogTitle>
+                    <DialogDescription>
+                      Shared by {getMemberByUserId(message.sender).name}
+                    </DialogDescription>
+                  </DialogHeader>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+                    <div>
+                      <img 
+                        src={expandedItemData?.product.images[0]} 
+                        alt={expandedItemData?.product.title} 
+                        className="w-full h-auto object-cover rounded-lg"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium mb-1">{expandedItemData?.product.title}</h3>
+                      <p className="text-sm text-gray-500 mb-2">{expandedItemData?.product.brand}</p>
+                      
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="text-lg font-bold">
+                          ${(expandedItemData?.product.discountedPrice / 100).toFixed(2)}
+                        </span>
+                        {expandedItemData?.product.price !== expandedItemData?.product.discountedPrice && (
+                          <span className="text-sm text-gray-500 line-through">
+                            ${(expandedItemData?.product.price / 100).toFixed(2)}
+                          </span>
+                        )}
+                        {expandedItemData?.product.discountPercentage > 0 && (
+                          <span className="text-xs text-green-500 font-medium bg-green-50 px-2 py-1 rounded">
+                            {expandedItemData.product.discountPercentage}% OFF
+                          </span>
+                        )}
+                      </div>
+                      
+                      <p className="text-sm mb-4">{expandedItemData?.product.description}</p>
+                      
+                      {expandedItemData?.product.sizes && (
+                        <div className="mb-4">
+                          <h4 className="text-sm font-medium mb-2">Available Sizes</h4>
+                          <div className="flex gap-2">
+                            {expandedItemData.product.sizes.map((size) => (
+                              <div key={size} className="border border-gray-300 px-3 py-1 rounded text-sm">
+                                {size}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      <div className="space-y-2 mt-6">
+                        {expandedItemData?.approvals.includes(currentUser?.id || 'user-1') ? (
                           <Button variant="secondary" className="w-full" disabled>
                             <ThumbsUp className="mr-2 h-4 w-4" />
                             Approved
                           </Button>
                         ) : (
-                          <Button className="w-full" onClick={() => handleApproveItem(item.id)}>
+                          <Button 
+                            className="w-full" 
+                            onClick={() => {
+                              handleApproveItem(expandedItemData?.id);
+                              setExpandedItem(null);
+                            }}
+                          >
                             <ThumbsUp className="mr-2 h-4 w-4" />
                             Approve
                           </Button>
-                        )
-                      }
-                    />
-                    <div className="absolute top-2 left-2 bg-white px-2 py-1 rounded-full text-xs flex items-center shadow-sm">
-                      <Avatar className="h-4 w-4 mr-1">
-                        <AvatarImage src={`https://i.pravatar.cc/150?img=${parseInt(item.sharedBy.split('-')[1]) + 10}`} />
-                        <AvatarFallback>{item.sharedBy[0]?.toUpperCase()}</AvatarFallback>
-                      </Avatar>
-                      Shared by User {item.sharedBy.split('-')[1]}
-                    </div>
-                    <div className="absolute top-2 right-2 bg-white px-2 py-1 rounded-full text-xs shadow-sm">
-                      {item.approvals.length} {item.approvals.length === 1 ? 'approval' : 'approvals'}
+                        )}
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-                <h2 className="text-xl font-semibold mb-2">No items shared yet</h2>
-                <p className="text-gray-600 mb-6">Share items from your wishlist with the group</p>
-                <Button asChild>
-                  <Link to="/wishlist">
-                    <Share className="mr-2 h-4 w-4" />
-                    Go to My Wishlist
-                  </Link>
-                </Button>
-              </div>
-            )}
-          </TabsContent>
-          
-          <TabsContent value="members" className="mt-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {members.map((member) => (
-                <div key={member.id} className="bg-white rounded-lg shadow-sm p-4 flex items-center">
-                  <Avatar className="h-12 w-12 mr-3">
-                    <AvatarImage src={member.avatar} />
-                    <AvatarFallback>{member.name[0]?.toUpperCase()}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <h3 className="font-medium">{member.name}</h3>
-                    <p className="text-gray-500 text-sm">@{member.username}</p>
-                  </div>
-                  {currentGroup.creator === member.id && (
-                    <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                      Creator
-                    </span>
+                  
+                  {/* If there are multiple items, show thumbnails to navigate between them */}
+                  {items.length > 1 && (
+                    <div className="border-t pt-4">
+                      <h4 className="text-sm font-medium mb-2">More items in this share</h4>
+                      <div className="flex gap-2 overflow-x-auto pb-2">
+                        {items.map((item, index) => (
+                          <div 
+                            key={item.id}
+                            onClick={() => setExpandedItem(item.id)}
+                            className={`cursor-pointer border-2 rounded overflow-hidden flex-shrink-0 w-16 h-16 ${
+                              item.id === expandedItem ? 'border-primary' : 'border-transparent'
+                            }`}
+                          >
+                            <img 
+                              src={item.product.images[0]} 
+                              alt={item.product.title} 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+                </>
+              );
+            })()}
+          </DialogContent>
+        </Dialog>
         
         {/* User invitation dialog */}
         <Dialog open={invitingUsers} onOpenChange={setInvitingUsers}>

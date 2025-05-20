@@ -121,7 +121,7 @@ const SideMenu = ({ className }: SideMenuProps) => {
             isActive={isActive('/')}
           />
           <MenuItem 
-            to="/discover" 
+            to="/discover"
             icon={<Compass size={20} />} 
             label="Discover" 
             isExpanded={isExpanded}

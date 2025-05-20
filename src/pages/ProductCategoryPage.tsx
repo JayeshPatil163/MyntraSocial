@@ -51,6 +51,7 @@ const FilterSection = ({ title, options, selectedFilters, onFilterChange }) => {
 
 const ProductCategoryPage = () => {
   const { categorySlug } = useParams();
+  console.log(categorySlug);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categoryName, setCategoryName] = useState('');
@@ -58,7 +59,7 @@ const ProductCategoryPage = () => {
   
   // Filter states
   const [selectedBrands, setSelectedBrands] = useState(['NOISE', 'boAt']);
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedcategory, setSelectedcategory] = useState([]);
   const [priceRange, setPriceRange] = useState([600, 5600]);
   const [sortBy, setSortBy] = useState('Recommended');
   const [activeFilters, setActiveFilters] = useState(['NOISE', 'boAt']);
@@ -93,7 +94,7 @@ const ProductCategoryPage = () => {
   const clearAllFilters = () => {
     setActiveFilters([]);
     setSelectedBrands([]);
-    setSelectedCategories([]);
+    setSelectedcategory([]);
   };
 
   // Filter change handlers
@@ -108,10 +109,10 @@ const ProductCategoryPage = () => {
   };
 
   const handleCategoryFilterChange = (category) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter(c => c !== category));
+    if (selectedcategory.includes(category)) {
+      setSelectedcategory(selectedcategory.filter(c => c !== category));
     } else {
-      setSelectedCategories([...selectedCategories, category]);
+      setSelectedcategory([...selectedcategory, category]);
     }
   };
 
@@ -216,9 +217,9 @@ const ProductCategoryPage = () => {
             {/* Filter Sections */}
             <div className="border-t border-gray-200 pt-4">
               <FilterSection 
-                title="CATEGORIES" 
+                title="category" 
                 options={categoryOptions}
-                selectedFilters={selectedCategories}
+                selectedFilters={selectedcategory}
                 onFilterChange={handleCategoryFilterChange}
               />
               
@@ -299,7 +300,7 @@ const ProductCategoryPage = () => {
           ) : (
             <div className="bg-gray-50 p-8 rounded text-center">
               <p className="text-lg">No products found in this category.</p>
-              <p className="text-gray-500 mt-2">Try adjusting your filters or browse other categories.</p>
+              <p className="text-gray-500 mt-2">Try adjusting your filters or browse other category.</p>
             </div>
           )}
         </div>

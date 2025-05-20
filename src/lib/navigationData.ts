@@ -1,5 +1,5 @@
 
-// Navigation categories and subcategories
+// Navigation category and subcategory
 export type SubCategory = {
   name: string;
   path: string;
@@ -8,7 +8,7 @@ export type SubCategory = {
 export type Category = {
   name: string;
   path: string;
-  subcategories: {
+  subcategory: {
     title?: string;
     items: SubCategory[];
   }[];
@@ -18,60 +18,60 @@ export const navigationCategories: Category[] = [
   {
     name: "MEN",
     path: "/products/men",
-    subcategories: [
+    subcategory: [
       {
         title: "Topwear",
         items: [
-          { name: "T-Shirts", path: "/products/men/t-shirts" },
-          { name: "Casual Shirts", path: "/products/men/casual-shirts" },
-          { name: "Formal Shirts", path: "/products/men/formal-shirts" },
-          { name: "Sweatshirts", path: "/products/men/sweatshirts" },
-          { name: "Sweaters", path: "/products/men/sweaters" },
-          { name: "Jackets", path: "/products/men/jackets" },
-          { name: "Blazers & Coats", path: "/products/men/blazers-coats" },
-          { name: "Suits", path: "/products/men/suits" },
-          { name: "Rain Jackets", path: "/products/men/rain-jackets" }
+          { name: "T-Shirts", path: "/products/t-shirts" },
+          { name: "Casual Shirts", path: "/products/casual-shirts" },
+          { name: "Formal Shirts", path: "/products/formal-shirts" },
+          { name: "Sweatshirts", path: "/products/sweatshirts" },
+          { name: "Sweaters", path: "/products/sweaters" },
+          { name: "Jackets", path: "/products/jackets" },
+          { name: "Blazers & Coats", path: "/products/blazers-coats" },
+          { name: "Suits", path: "/products/suits" },
+          { name: "Rain Jackets", path: "/products/rain-jackets" }
         ]
       },
       {
         title: "Bottomwear",
         items: [
-          { name: "Jeans", path: "/products/men/jeans" },
-          { name: "Casual Trousers", path: "/products/men/casual-trousers" },
-          { name: "Formal Trousers", path: "/products/men/formal-trousers" },
-          { name: "Shorts", path: "/products/men/shorts" },
-          { name: "Track Pants & Joggers", path: "/products/men/track-pants-joggers" }
+          { name: "Jeans", path: "/products/jeans" },
+          { name: "Casual Trousers", path: "/products/casual-trousers" },
+          { name: "Formal Trousers", path: "/products/formal-trousers" },
+          { name: "Shorts", path: "/products/shorts" },
+          { name: "Track Pants & Joggers", path: "/products/track-pants-joggers" }
         ]
       },
       {
         title: "Innerwear & Sleepwear",
         items: [
-          { name: "Briefs & Trunks", path: "/products/men/briefs-trunks" },
-          { name: "Boxers", path: "/products/men/boxers" },
-          { name: "Vests", path: "/products/men/vests" },
-          { name: "Sleepwear & Loungewear", path: "/products/men/sleepwear-loungewear" },
-          { name: "Thermals", path: "/products/men/thermals" }
+          { name: "Briefs & Trunks", path: "/products/briefs-trunks" },
+          { name: "Boxers", path: "/products/boxers" },
+          { name: "Vests", path: "/products/vests" },
+          { name: "Sleepwear & Loungewear", path: "/products/sleepwear-loungewear" },
+          { name: "Thermals", path: "/products/thermals" }
         ]
       },
       {
         title: "Footwear",
         items: [
-          { name: "Casual Shoes", path: "/products/men/casual-shoes" },
-          { name: "Sports Shoes", path: "/products/men/sports-shoes" },
-          { name: "Formal Shoes", path: "/products/men/formal-shoes" },
-          { name: "Sneakers", path: "/products/men/sneakers" },
-          { name: "Sandals & Floaters", path: "/products/men/sandals-floaters" },
-          { name: "Flip Flops", path: "/products/men/flip-flops" },
-          { name: "Socks", path: "/products/men/socks" }
+          { name: "Casual Shoes", path: "/products/casual-shoes" },
+          { name: "Sports Shoes", path: "/products/sports-shoes" },
+          { name: "Formal Shoes", path: "/products/formal-shoes" },
+          { name: "Sneakers", path: "/products/sneakers" },
+          { name: "Sandals & Floaters", path: "/products/sandals-floaters" },
+          { name: "Flip Flops", path: "/products/flip-flops" },
+          { name: "Socks", path: "/products/socks" }
         ]
       },
       {
         title: "Indian & Festive Wear",
         items: [
-          { name: "Kurtas & Kurta Sets", path: "/products/men/kurtas-kurta-sets" },
-          { name: "Sherwanis", path: "/products/men/sherwanis" },
-          { name: "Nehru Jackets", path: "/products/men/nehru-jackets" },
-          { name: "Dhotis", path: "/products/men/dhotis" }
+          { name: "Kurtas & Kurta Sets", path: "/products/kurtas-kurta-sets" },
+          { name: "Sherwanis", path: "/products/sherwanis" },
+          { name: "Nehru Jackets", path: "/products/nehru-jackets" },
+          { name: "Dhotis", path: "/products/dhotis" }
         ]
       }
     ]
@@ -79,34 +79,34 @@ export const navigationCategories: Category[] = [
   {
     name: "WOMEN",
     path: "/products/women",
-    subcategories: [
+    subcategory: [
       {
         title: "Indian & Fusion Wear",
         items: [
-          { name: "Kurtas & Suits", path: "/products/women/kurtas-suits" },
-          { name: "Sarees", path: "/products/women/sarees" },
-          { name: "Ethnic Wear", path: "/products/women/ethnic-wear" },
-          { name: "Leggings & Churidars", path: "/products/women/leggings-churidars" }
+          { name: "Kurtas & Suits", path: "/products/kurtas-suits" },
+          { name: "Sarees", path: "/products/sarees" },
+          { name: "Ethnic Wear", path: "/products/ethnic-wear" },
+          { name: "Leggings & Churidars", path: "/products/leggings-churidars" }
         ]
       },
       {
         title: "Western Wear",
         items: [
-          { name: "Dresses", path: "/products/women/dresses" },
-          { name: "Tops", path: "/products/women/tops" },
-          { name: "T-shirts", path: "/products/women/t-shirts" },
-          { name: "Jeans", path: "/products/women/jeans" },
-          { name: "Trousers & Capris", path: "/products/women/trousers-capris" },
-          { name: "Shorts & Skirts", path: "/products/women/shorts-skirts" }
+          { name: "Dresses", path: "/products/dresses" },
+          { name: "Tops", path: "/products/tops" },
+          { name: "T-shirts", path: "/products/t-shirts" },
+          { name: "Jeans", path: "/products/jeans" },
+          { name: "Trousers & Capris", path: "/products/trousers-capris" },
+          { name: "Shorts & Skirts", path: "/products/shorts-skirts" }
         ]
       },
       {
         title: "Footwear",
         items: [
-          { name: "Flats", path: "/products/women/flats" },
-          { name: "Heels", path: "/products/women/heels" },
-          { name: "Casual Shoes", path: "/products/women/casual-shoes" },
-          { name: "Sports Shoes", path: "/products/women/sports-shoes" }
+          { name: "Flats", path: "/products/flats" },
+          { name: "Heels", path: "/products/heels" },
+          { name: "Casual Shoes", path: "/products/casual-shoes" },
+          { name: "Sports Shoes", path: "/products/sports-shoes" }
         ]
       }
     ]
@@ -114,62 +114,62 @@ export const navigationCategories: Category[] = [
   {
     name: "KIDS",
     path: "/products/kids",
-    subcategories: [
+    subcategory: [
       {
         title: "Boys Clothing",
         items: [
-          { name: "T-Shirts", path: "/products/kids/boys-t-shirts" },
-          { name: "Shirts", path: "/products/kids/boys-shirts" },
-          { name: "Jeans", path: "/products/kids/boys-jeans" },
-          { name: "Trousers", path: "/products/kids/boys-trousers" }
+          { name: "T-Shirts", path: "/products/boys-t-shirts" },
+          { name: "Shirts", path: "/products/boys-shirts" },
+          { name: "Jeans", path: "/products/boys-jeans" },
+          { name: "Trousers", path: "/products/boys-trousers" }
         ]
       },
       {
         title: "Girls Clothing",
         items: [
-          { name: "Dresses", path: "/products/kids/girls-dresses" },
-          { name: "Tops", path: "/products/kids/girls-tops" },
-          { name: "T-shirts", path: "/products/kids/girls-t-shirts" },
-          { name: "Jeans", path: "/products/kids/girls-jeans" }
+          { name: "Dresses", path: "/products/girls-dresses" },
+          { name: "Tops", path: "/products/girls-tops" },
+          { name: "T-shirts", path: "/products/girls-t-shirts" },
+          { name: "Jeans", path: "/products/girls-jeans" }
         ]
       },
       {
         title: "Footwear",
         items: [
-          { name: "Casual Shoes", path: "/products/kids/casual-shoes" },
-          { name: "Sports Shoes", path: "/products/kids/sports-shoes" },
-          { name: "Flip Flops", path: "/products/kids/flip-flops" }
+          { name: "Casual Shoes", path: "/products/casual-shoes" },
+          { name: "Sports Shoes", path: "/products/sports-shoes" },
+          { name: "Flip Flops", path: "/products/flip-flops" }
         ]
       }
     ]
   },
   {
-    name: "HOME & LIVING",
+    name: "HOME",
     path: "/products/home",
-    subcategories: [
+    subcategory: [
       {
         title: "Bed Linen & Furnishing",
         items: [
-          { name: "Bedsheets", path: "/products/home/bedsheets" },
-          { name: "Blankets", path: "/products/home/blankets" },
-          { name: "Pillows", path: "/products/home/pillows" },
-          { name: "Cushions", path: "/products/home/cushions" }
+          { name: "Bedsheets", path: "/products/bedsheets" },
+          { name: "Blankets", path: "/products/blankets" },
+          { name: "Pillows", path: "/products/pillows" },
+          { name: "Cushions", path: "/products/cushions" }
         ]
       },
       {
         title: "Kitchen & Table",
         items: [
-          { name: "Cookware", path: "/products/home/cookware" },
-          { name: "Tableware", path: "/products/home/tableware" },
-          { name: "Kitchen Storage", path: "/products/home/kitchen-storage" }
+          { name: "Cookware", path: "/products/cookware" },
+          { name: "Tableware", path: "/products/tableware" },
+          { name: "Kitchen Storage", path: "/products/kitchen-storage" }
         ]
       },
       {
         title: "Decor",
         items: [
-          { name: "Wall Art", path: "/products/home/wall-art" },
-          { name: "Clocks", path: "/products/home/clocks" },
-          { name: "Plants & Planters", path: "/products/home/plants-planters" }
+          { name: "Wall Art", path: "/products/wall-art" },
+          { name: "Clocks", path: "/products/clocks" },
+          { name: "Plants & Planters", path: "/products/plants-planters" }
         ]
       }
     ]
@@ -177,24 +177,61 @@ export const navigationCategories: Category[] = [
   {
     name: "BEAUTY",
     path: "/products/beauty",
-    subcategories: [
+    subcategory: [
       {
         title: "Personal Care & Grooming",
         items: [
-          { name: "Skincare", path: "/products/beauty/skincare" },
-          { name: "Haircare", path: "/products/beauty/haircare" },
-          { name: "Fragrances", path: "/products/beauty/fragrances" },
-          { name: "Makeup", path: "/products/beauty/makeup" }
+          { name: "Skincare", path: "/products/skincare" },
+          { name: "Haircare", path: "/products/haircare" },
+          { name: "Fragrances", path: "/products/fragrances" },
+          { name: "Makeup", path: "/products/makeup" }
         ]
       },
       {
         title: "Appliances",
         items: [
-          { name: "Hair Straightener", path: "/products/beauty/hair-straightener" },
-          { name: "Hair Dryer", path: "/products/beauty/hair-dryer" },
-          { name: "Epilator", path: "/products/beauty/epilator" }
+          { name: "Hair Straightener", path: "/products/hair-straightener" },
+          { name: "Hair Dryer", path: "/products/hair-dryer" },
+          { name: "Epilator", path: "/products/epilator" }
         ]
       }
     ]
+  },
+  {
+    name: "GENZ",
+    path: "/products/genz",
+    subcategory: [
+      {
+        title: "Streetwear",
+        items: [
+          { name: "Graphic Tees", path: "/products/graphic-tees" },
+          { name: "Hoodies", path: "/products/hoodies" },
+          { name: "Joggers", path: "/products/joggers" },
+          { name: "Caps", path: "/products/caps" }
+        ]
+      },
+      {
+        title: "Accessories",
+        items: [
+          { name: "Bags", path: "/products/bags" },
+          { name: "Watches", path: "/products/watches" },
+          { name: "Sunglasses", path: "/products/sunglasses" },
+          { name: "Jewelry", path: "/products/jewelry" },
+          { name: "Scarves", path: "/products/scarves" },
+          { name: "Belts", path: "/products/belts" },
+          { name: "Hats", path: "/products/hats" },
+          { name: "Gloves", path: "/products/gloves" },
+          { name: "Shoes", path: "/products/shoes" },
+          { name: "Socks", path: "/products/socks" },
+          { name: "Ties", path: "/products/ties" },
+          { name: "Accessories", path: "/products/accessories" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "STUDIO",
+    path: "/products/studio",
+    subcategory: []
   }
 ];

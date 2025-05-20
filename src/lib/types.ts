@@ -7,7 +7,7 @@ export interface Product {
   discountedPrice: number;
   discountPercentage: number;
   images: string[];
-  category: string;
+  category: string[];
   gender: string;
   ratings: number;
   description: string;

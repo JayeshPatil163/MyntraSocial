@@ -34,7 +34,7 @@ const Index = () => {
   </div>
 </div>
         <div className="container mx-auto px-2 space-y-12 pb-12">
-          {/* Categories */}
+          {/* category */}
           <section className="my-8">
             <div className="relative">
               <img 
@@ -47,7 +47,7 @@ const Index = () => {
               </h2>
             </div>
             <CategorySection 
-              categories={categories} 
+              category={categories} 
               title="" 
             />  
           </section>

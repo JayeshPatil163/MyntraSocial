@@ -127,7 +127,7 @@ const ProductDetailPage = () => {
           </Link>
           {' / '}
           <Link to={`/products/${product.category}`} className="hover:text-primary">
-            {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+            {product.category}
           </Link>
           {' / '}
           <span>{product.brand}</span>

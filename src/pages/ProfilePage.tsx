@@ -11,9 +11,11 @@ import { useWishlist } from '@/contexts/WishlistContext';
 import ProductGrid from '@/components/products/ProductGrid';
 import { Loader2, UserPlus, UserX, UserCheck } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { getUser, addFollowers, removeFollowers } from '@/lib/data';
+import { add } from 'date-fns';
 
 const ProfilePage = () => {
-  const { username } = useParams<{ username: string }>();
+  const { userid } = useParams<{ userid: string }>();
   const { user: currentUser } = useAuth();
   const { toast } = useToast();
   const { items: wishlistItems } = useWishlist();
@@ -28,19 +30,20 @@ const ProfilePage = () => {
     // Simulate fetching user data
     setIsLoading(true);
     setTimeout(() => {
+      console.log('userId: ', userid);
       // Mock user data for demo
-      if (username === currentUser?.username || !username) {
-        setUser(currentUser);
-        setIsLoading(false);
-        return;
+      if(userid)
+      {
+          setUser(getUser(userid) [0]);
       }
       
       // Mock another user
+      else{
       setUser({
         id: '12345',
         name: 'Demo User',
         email: 'demo@example.com',
-        username: username || 'demouser',
+        username: 'demouser',
         avatar: 'https://i.pravatar.cc/300',
         bio: 'Fashion enthusiast and shopaholic!',
         followers: ['1', '2', '3'],
@@ -49,10 +52,11 @@ const ProfilePage = () => {
         pendingFriendRequests: [],
         sentFriendRequests: [],
       });
+    }
       
       setIsLoading(false);
     }, 1000);
-  }, [username, currentUser]);
+  }, [userid, currentUser]);
 
   useEffect(() => {
     // Check if current user is following this profile
@@ -87,7 +91,7 @@ const ProfilePage = () => {
   const handleFollow = () => {
     // In a real app, we would send an API request to follow/unfollow
     setIsFollowing(!isFollowing);
-    
+    isFollowing ? addFollowers(user.id, currentUser.id) : removeFollowers(user.id, currentUser.id);
     toast({
       title: isFollowing ? "Unfollowed" : "Followed",
       description: isFollowing 
